@@ -25,7 +25,7 @@ class App extends Component {
   }
   markComplete = (id) =>{
     this.setState({todos:this.state.todos.map(todo=>{
-      if(todo.id==id){
+      if(todo.id===id){
         todo.completed=!todo.completed
       }
       return todo;
@@ -34,11 +34,19 @@ class App extends Component {
   delTodo = (id) =>{
    this.setState({todos:[...this.state.todos.filter(todo=>todo.id!==id)]});
   }
+  AddTodo = (title) =>{
+    const newItem = {
+      id:'4',
+      title,
+      completed:false
+    }
+    this.setState({todos:[...this.state.todos,newItem]});
+  }
   render(){
     return(
      <div className="App">
       <Header />
-      <Input />
+      <Input AddTodo={this.AddTodo} />
       <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo}/>
      </div>
     );

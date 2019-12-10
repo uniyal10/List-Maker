@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import Header from './header';
 
 
 class TodoItem extends Component {
@@ -18,7 +17,6 @@ class TodoItem extends Component {
       <div style={this.getStyle()}>
         
         <p>
-        
             <input type="checkbox" onChange={this.props.markComplete.bind(this, id)}/>{' '}
             {title}
             <button style={btnStyle} onClick={this.props.delTodo.bind(this,id)}>X</button>
@@ -33,8 +31,7 @@ TodoItem.propTypes={
     todo:PropTypes.object.isRequired
 }
 const btnStyle={
-    background:'#ff0000',
-    color:'#fff',
+    color:'#333',
     border:'none',
     padding:'5px 10px',
     borderRadius:'50%',

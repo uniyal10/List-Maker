@@ -1,22 +1,38 @@
-import React from'react';
+import React,{Component} from'react';
 import '../App.css';
 
 
-function Input(){
+class Input extends Component{
+    state={
+        title:''
+    }
+    onChange = (e)=>{
+        this.setState({[e.target.name]:e.target.value});
+    }
+    onSubmit=(e)=>{
+        e.preventDefault();
+        this.props.AddTodo(this.state.title);
+        this.setState({title:' '});
+    }
+    render(){
     return(
-        <form style={{display:'flex'}}>
+        <form onSubmit={this.onSubmit} style={{display:'flex'}}>
             <input 
             style={input}
             type="text"
-            name="input"
+            name="title"
             placeholder="type todos.."
+            value={this.state.title}
+            onChange={this.onChange}
+
             />
-            <button className="btn" type="submit">
-             Enter
-            </button>
+            <input className="btn" type="submit"
+             value="Enter"
+            />
           
         </form>
     );
+    }
 }
 const input={
    flex:'10',
