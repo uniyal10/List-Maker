@@ -15,7 +15,7 @@ class App extends Component {
         completed:false
       },
       {
-        id:1,
+        id:3,
         title:'dinner with wife',
         completed:false
       }
