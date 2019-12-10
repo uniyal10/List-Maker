@@ -1,60 +1,34 @@
 import React, {Component}  from 'react';
-import { render } from 'react-dom';
-import './App.css';
+import Todos from './components/Todos';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: '',
-      listOfTodo: []
-
-    };
+  state={
+    todos:[
+      {
+        id:1,
+        title:'take out trash',
+        completed:false
+      },
+      {
+        id:2,
+        title:'meeting with boss',
+        completed:false
+      },
+      {
+        id:1,
+        title:'dinner with wife',
+        completed:false
+      }
+    ]
   }
-  handleChangeOfName = event => {
-    console.log(this.state.name);
-    this.setState({
-      name: event.target.value,
-    });
-  };
-  addToDo = event => {
-    this.setState({
-      listOfTodo: [...this.state.listOfTodo, this.state.name],
-      name: ""
-    })
-  }
-  delete = (value) =>{
-    alert(value);
-    let filtered = this.state.listOfTodo.filter((eachItem) => {
-      return eachItem != value
-    }
-    )
-    this.setState({
-      listOfTodo: filtered
-    })
-  }
-  render() {
-    return (
-      <div>
-        <p>
-          Start editing to see some magic happen :)
-        </p>
-          <input
-          type="text"
-          onChange={event => this.handleChangeOfName(event)}
-          value={this.state.name}
-          placeholder="Enter name..."
-        />
-        <button onClick={this.addToDo}> Add </button>
-                <h1>Value  {this.state.name}</h1>
-{
-  this.state.listOfTodo.map(eachElm => (
-    <li>{eachElm} <button onClick={() => this.delete(eachElm)}>Delete</button></li>
-  ))
-}
-      </div>
+  render(){
+    return(
+     <div className="App">
+      <Todos todos={this.state.todos}/>
+     </div>
     );
   }
 }
+  
 
 export default App;
